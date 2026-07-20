@@ -9,12 +9,13 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Cedarwave Technologies">
-  <meta property="og:title" content="Cedarwave Technologies — Useful technology, made with care">
-  <meta property="og:description" content="An independent software studio building thoughtful products for everyday life.">
+  <meta property="og:title" content="Cedarwave Technologies — Thoughtful software for everyday life">
+  <meta property="og:description" content="An independent software studio building focused digital products with clarity, privacy, and long-term usefulness.">
   <meta property="og:url" content="https://cedarwavetechnologies.com/">
   <meta name="twitter:card" content="summary">
   <title>Cedarwave Technologies | Thoughtful Software for Everyday Life</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -22,67 +23,125 @@
       "name": "Cedarwave Technologies",
       "legalName": "IQBAL, LLC",
       "url": "https://cedarwavetechnologies.com/",
-      "email": "zarrar@cedarwavetechnologies.com"
+      "email": "support@cedarwavetechnologies.com"
     }
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Cedarwave Technologies home">
-      <span class="brand-mark">C</span>
-      <span>Cedarwave Technologies</span>
-    </a>
-    <nav aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="support.html">Support</a>
-    </nav>
+    <div class="site-header__inner">
+      <a class="brand" href="index.html" aria-label="Cedarwave Technologies home">
+        <img src="assets/cedarwave-mark.svg" alt="" width="28" height="28">
+        <span>Cedarwave Technologies</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-button>
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span><span class="sr-only">Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary" data-mobile-nav data-open="false">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="support.html">Support</a>
+        <a class="nav-cta" href="roofmates.html">Explore Roofmates</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Independent software studio</p>
-      <h1>Useful technology, made with care.</h1>
-      <p class="hero-copy">Cedarwave Technologies builds focused digital products that make everyday tasks feel simpler, clearer, and more human.</p>
-      <a class="button" href="#products">Explore our work</a>
-    </section>
-
-    <section id="about" class="section split">
+  <main id="main">
+    <section class="home-hero">
       <div>
-        <p class="eyebrow">About us</p>
-        <h2>Small team. Practical ideas. Long-term thinking.</h2>
-      </div>
-      <p>Cedarwave Technologies is the registered trade name of IQBAL, LLC, a Washington limited liability company. We develop and operate software products across consumer and business categories.</p>
-    </section>
-
-    <section id="products" class="section">
-      <p class="eyebrow">Our products</p>
-      <div class="product-card">
-        <div>
-          <span class="status">Preparing for launch</span>
-          <h2>Roofmates</h2>
-          <p>A shared-living app for coordinating roommate expenses, plans, chores, conversations, guests, and day-to-day household life.</p>
-          <p><a class="text-link" href="roofmates.html">Explore Roofmates →</a></p>
+        <h1>Thoughtful software for <em>everyday life.</em></h1>
+        <p class="home-hero__copy">Cedarwave Technologies is an independent software studio building focused digital products that make everyday tasks feel simpler, clearer, and more human.</p>
+        <div class="button-row">
+          <a class="button" href="roofmates.html">Explore Roofmates</a>
+          <a class="button button--secondary" href="#about">About Cedarwave</a>
         </div>
-        <div class="product-icon" aria-hidden="true">R</div>
+        <p class="home-hero__meta mono">Independent software studio · Based in Washington State</p>
+      </div>
+      <div class="home-hero__art" aria-hidden="true">
+        <img src="assets/grainwave-light.svg" alt="" width="1240" height="560">
       </div>
     </section>
 
-    <section class="section contact">
-      <div>
-        <p class="eyebrow">Get in touch</p>
-        <h2>Questions about Cedarwave or our products?</h2>
+    <section class="section" id="work">
+      <div class="section-inner">
+        <div class="section-heading"><span class="section-kicker">Work</span></div>
+        <div class="work-grid">
+          <div class="work-copy">
+            <h2>Roofmates</h2>
+            <p class="byline mono">by Cedarwave Technologies</p>
+            <p class="status mono">Preparing for closed testing</p>
+            <p class="lead">A calm shared-living app for coordinating expenses, settlements, invitations, plans, and household context.</p>
+            <p class="supporting">One place for the money and plans a household actually shares — and clear boundaries around everything it doesn't.</p>
+            <div class="button-row">
+              <a class="button" href="roofmates.html">Explore Roofmates</a>
+              <a href="roofmates-support.html">Roofmates support</a>
+            </div>
+          </div>
+          <div>
+            <div class="phone-stage">
+              <img src="assets/roofmates-phone-ios.png" width="669" height="1396" alt="Roofmates for iOS showing the Home, Wallet, House, and You destinations">
+            </div>
+            <p class="image-caption mono">Roofmates for iOS — Home · Wallet · House · You</p>
+          </div>
+        </div>
       </div>
-      <a class="button secondary" href="mailto:zarrar@cedarwavetechnologies.com">Email us</a>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-inner">
+        <div class="section-heading"><span class="section-kicker">About</span></div>
+        <div class="about-grid">
+          <h2>Small by design.<br>Serious about the work.</h2>
+          <div>
+            <p>Cedarwave Technologies is an independent software studio based in Washington State. We build and operate focused software products with an emphasis on clarity, privacy, and long-term usefulness.</p>
+            <p>We would rather do one thing carefully than ten things loudly. Products stay small on purpose, ship when they are ready, and are maintained like they will be around for a long time.</p>
+            <p class="disclosure">Cedarwave Technologies is a registered trade name of IQBAL, LLC.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-heading"><span class="section-kicker">Operating principles</span></div>
+        <div class="principles">
+          <article class="principle"><span class="principle__number mono">01</span><h3>Useful before impressive</h3><p>A feature ships when it makes a real task easier — not because it demos well.</p></article>
+          <article class="principle"><span class="principle__number mono">02</span><h3>Clear about what a product does</h3><p>Plain descriptions and honest status labels. No claims ahead of the software.</p></article>
+          <article class="principle"><span class="principle__number mono">03</span><h3>Privacy and boundaries by design</h3><p>Features default to the smallest audience that makes them work — and say so plainly.</p></article>
+          <article class="principle"><span class="principle__number mono">04</span><h3>Built for long-term stewardship</h3><p>We operate what we ship: steady, compatible releases over constant reinvention.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner contact-grid">
+        <div>
+          <h2>Questions about Cedarwave or our products?</h2>
+          <p class="mono"><a href="mailto:support@cedarwavetechnologies.com">support@cedarwavetechnologies.com</a></p>
+        </div>
+        <a class="button" href="mailto:support@cedarwavetechnologies.com">Email Cedarwave</a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Cedarwave Technologies. A registered trade name of IQBAL, LLC.</p>
-    <div>
-      <a href="privacy.html">Privacy</a>
-      <a href="support.html">Support</a>
-      <a href="roofmates.html">Roofmates</a>
+  <footer class="site-footer">
+    <img class="footer-wave" src="assets/current-divider-dark.svg" alt="" aria-hidden="true">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><img src="assets/cedarwave-mark-dark.svg" alt="" width="28" height="28"><span>Cedarwave Technologies</span></a>
+        <p>Thoughtful software for everyday life.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Company">
+        <span class="mono">Company</span><a href="roofmates.html">Roofmates</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Roofmates">
+        <span class="mono">Roofmates</span><a href="roofmates-support.html">Roofmates Support</a><a href="roofmates-privacy.html">Roofmates Privacy</a><a href="roofmates-terms.html">Roofmates Terms</a><a href="roofmates-delete-account.html">Delete Roofmates Account</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Cedarwave Technologies. Cedarwave Technologies is a registered trade name of IQBAL, LLC.</p>
+      <p>Based in Washington State</p>
     </div>
   </footer>
 </body>
