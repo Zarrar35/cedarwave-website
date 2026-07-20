@@ -344,7 +344,7 @@ class Validation:
         print(f"PASS: {self.json_ld_count} JSON-LD blocks are valid schema.org JSON")
         print(f"PASS: sitemap has {self.sitemap_count} URLs matching all indexable canonicals")
         print(f"PASS: {self.reference_count} local links and assets resolve, including fragments")
-        print("PASS: Roofmates launch pages contain 0 unsupported claim matches")
+        print("PASS: Roofmates launch pages contain 0 enumerated disallowed launch-term matches")
         print("PASS: no tracking markers or external scripts found")
         return 0
 
