@@ -21,7 +21,14 @@ UNSUPPORTED_ROOFMATES_CLAIMS = {
     "groceries": re.compile(r"\bgroceries\b", re.IGNORECASE),
     "maintenance": re.compile(r"\bmaintenance\b", re.IGNORECASE),
     "Event tasks": re.compile(r"\bevent\s+tasks?\b", re.IGNORECASE),
-    "Pool contributions": re.compile(r"\bpool\s+contributions?\b", re.IGNORECASE),
+    "Pool funding or contributions": re.compile(
+        r"\b(?:pools?\s+(?:track\s+)?contributions?|contributions?\s+(?:to|toward|for)\s+(?:a\s+)?(?:shared\s+)?(?:pool|goal))\b",
+        re.IGNORECASE,
+    ),
+    "household-wide chat": re.compile(
+        r"\b(?:every\s+household[^.!?]{0,80}(?:thread|conversation)|household\s+(?:chat|conversation(?:s)?))\b",
+        re.IGNORECASE,
+    ),
     "Finder": re.compile(r"\bfinder\b", re.IGNORECASE),
     "Premium": re.compile(r"\bpremium\b", re.IGNORECASE),
 }
