@@ -190,9 +190,9 @@ h1, h2, h3, p { text-wrap: pretty; }
 }
 .button--secondary:hover { background: rgba(28, 39, 33, .06); color: var(--ink); border-color: var(--ink); }
 .button--product { background: var(--clay); }
-.button--product:hover { background: #a7381b; }
+.button--product:hover { background: #a7381b; color: #fffaf2; }
 .button--wine { background: var(--wine); }
-.button--wine:hover { background: #641f38; }
+.button--wine:hover { background: #641f38; color: #fffaf2; }
 .button-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 
 /* Home */
@@ -235,6 +235,33 @@ h1, h2, h3, p { text-wrap: pretty; }
 .phone-stage::before { content: ''; position: absolute; inset: 0; background: url('assets/grainwave-wine.svg') center / 900px auto no-repeat; opacity: .45; }
 .phone-stage img { position: relative; width: 270px; filter: drop-shadow(0 16px 20px rgba(50, 31, 25, .16)); }
 .image-caption { margin: 14px 4px 0; color: var(--muted); font-size: 11.5px; letter-spacing: .08em; }
+
+.launch-preview {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 320px);
+  min-height: 540px;
+  padding: 28px 20px 22px;
+  overflow: hidden;
+  color: #2e211d;
+  background: #f6eddf;
+  border: 8px solid #382924;
+  border-radius: 42px;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, .28);
+}
+.launch-preview__top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.launch-preview__top strong { font-size: 15px; }
+.launch-preview__top span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: #fff; background: #7c2947; font-weight: 700; }
+.launch-preview__eyebrow { margin: 34px 0 6px; color: #7c2947; font-family: 'Spline Sans Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.launch-preview__greeting { margin: 0; color: #2e211d; font-family: 'Newsreader', Georgia, serif; font-size: 34px; font-weight: 500; line-height: 1.03; letter-spacing: -.018em; }
+.launch-preview__notice { margin-top: 24px; color: #a83217; font-size: 15px; font-weight: 700; }
+.launch-preview__card { display: grid; gap: 4px; margin-top: 18px; padding: 15px; background: #fffaf2; border: 1px solid #ddcfbd; border-radius: 14px; }
+.launch-preview__card span { color: #756961; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.launch-preview__card strong { font-size: 15px; }
+.launch-preview__card small { color: #756961; font-size: 11px; }
+.launch-preview__nav { position: absolute; left: 14px; right: 14px; bottom: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 12px 8px; background: #fffaf2; border: 1px solid #ddcfbd; border-radius: 18px; }
+.launch-preview__nav span { color: #756961; font-size: 9px; font-weight: 700; text-align: center; }
+.launch-preview__nav span:first-child { color: #7c2947; }
 
 .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 80px; margin-top: 48px; }
 .about-grid h2 { margin: 0; font-size: 46px; line-height: 1.12; }
@@ -279,6 +306,7 @@ h1, h2, h3, p { text-wrap: pretty; }
 .product-phones img:first-child { left: 0; bottom: 0; }
 .product-phones img:last-child { right: -30px; top: 0; }
 .product-phones--single img { left: auto !important; right: 70px !important; top: 8px !important; bottom: auto !important; width: 320px; }
+.product-phones--single .launch-preview { position: absolute; right: 70px; top: 8px; }
 
 .feature-list { margin-top: 34px; }
 .feature-row { display: grid; grid-template-columns: 1fr 500px; gap: 96px; align-items: center; padding: 64px 0; border-bottom: 1px solid var(--line); }
@@ -309,7 +337,7 @@ h1, h2, h3, p { text-wrap: pretty; }
 .bubble--mine { margin-left: auto; border-radius: 14px 14px 4px 14px; background: var(--wine); color: white; }
 .scope-list { display: grid; gap: 8px; }
 .scope-list .ui-row { margin: 0; padding: 10px 0; }
-.pill { border-radius: 999px; padding: 4px 9px; background: #e3eadb; color: var(--cedar); font-size: 10px; font-family: 'Spline Sans Mono', monospace; letter-spacing: .06em; }
+.pill { border-radius: 999px; padding: 4px 9px; background: #e3eadb; color: #1c2721; font-size: 10px; font-family: 'Spline Sans Mono', monospace; letter-spacing: .06em; }
 
 .boundaries { background: var(--sage); }
 .boundaries__inner { max-width: calc(var(--content) + 2 * var(--gutter)); margin: 0 auto; padding: 86px var(--gutter); display: grid; grid-template-columns: .95fr 1.05fr; gap: 86px; align-items: center; }
@@ -323,7 +351,7 @@ h1, h2, h3, p { text-wrap: pretty; }
 .launch-band { background: var(--night-warm); color: #e8ddd5; }
 .launch-band__inner { max-width: calc(var(--content) + 2 * var(--gutter)); margin: 0 auto; padding: 64px var(--gutter); display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
 .launch-band .mono { color: #bf7892; }
-.launch-band h2 { margin: 9px 0 0; color: var(--paper); font-size: 31px; line-height: 1.15; }
+.launch-band h2 { margin: 9px 0 0; color: var(--ink); font-size: 31px; line-height: 1.15; }
 .launch-band p { color: #cbbdb6; }
 .faq-grid { display: grid; grid-template-columns: 340px 1fr; gap: 80px; margin-top: 42px; }
 .faq-grid h2 { margin: 0; font-size: 44px; line-height: 1.05; }
@@ -459,6 +487,7 @@ h1, h2, h3, p { text-wrap: pretty; }
   .work-grid { grid-template-columns: 1fr 480px; gap: 52px; }
   .phone-stage { height: 560px; }
   .phone-stage img { width: 270px; }
+  .launch-preview { min-height: 510px; }
   .product-hero__inner { grid-template-columns: 560px 1fr; gap: 30px; padding-left: 48px; padding-right: 48px; }
   .feature-row { grid-template-columns: 1fr 440px; gap: 60px; }
   .support-layout, .legal-layout, .deletion-layout { gap: 64px; }
@@ -522,12 +551,13 @@ h1, h2, h3, p { text-wrap: pretty; }
   .byline { font-size: 9px; }
   .status { margin-top: 18px; font-size: 9px; }
   .work-copy .lead { font-size: 14px; }
-  .work-copy .supporting { display: none; }
+  .work-copy .supporting { font-size: 13px; }
   .work-copy .button-row { display: grid; gap: 10px; }
   .work-copy .button { width: 100%; }
   .work-copy .button-row a:not(.button) { min-height: 44px; display: flex; align-items: center; justify-content: center; }
   .phone-stage { height: auto; padding: 24px 14px 0; border-radius: 18px; }
   .phone-stage img { width: 100%; max-width: 284px; }
+  .phone-stage .launch-preview { width: 100%; max-width: 284px; min-height: 500px; }
   .image-caption { font-size: 8px; }
   .about-grid { margin-top: 28px; }
   .about-grid h2 { font-size: 34px; }
@@ -552,6 +582,13 @@ h1, h2, h3, p { text-wrap: pretty; }
   .product-phones img:first-child { left: 0; }
   .product-phones img:last-child { right: -42px; top: 10px; }
   .product-phones--single img { width: 220px; right: 42px !important; top: 8px !important; }
+  .product-phones--single .launch-preview { position: relative; right: auto; top: auto; width: 240px; min-height: 380px; margin: 8px auto 0; padding: 20px 14px 16px; border-width: 6px; border-radius: 32px; }
+  .product-phones--single .launch-preview__eyebrow { margin-top: 20px; }
+  .product-phones--single .launch-preview__greeting { font-size: 27px; }
+  .product-phones--single .launch-preview__notice { margin-top: 16px; font-size: 12px; }
+  .product-phones--single .launch-preview__card { margin-top: 10px; padding: 10px; }
+  .product-phones--single .launch-preview__card + .launch-preview__card { display: none; }
+  .product-phones--single .launch-preview__nav { left: 10px; right: 10px; bottom: 10px; padding: 9px 5px; }
   .feature-list { margin-top: 10px; }
   .feature-row { padding: 36px 0; }
   .feature-copy h2 { margin-top: 8px; font-size: 31px; }
