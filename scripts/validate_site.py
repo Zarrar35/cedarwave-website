@@ -75,6 +75,15 @@ REQUIRED_ROOFMATES_TRUTHS = (
 REQUIRED_INDEX_TRUTHS = (
     "with explicit participant boundaries and no money movement.",
 )
+DEFERRED_PRIVACY_CATEGORIES = {
+    "chores": re.compile(r"\bchores?\b", re.IGNORECASE),
+    "groceries or lists": re.compile(r"\b(?:groceries|lists?)\b", re.IGNORECASE),
+    "maintenance or Safety Center": re.compile(r"\b(?:maintenance|safety\s+center)\b", re.IGNORECASE),
+    "purchases, subscriptions, or entitlements": re.compile(
+        r"\b(?:purchases?|subscriptions?|entitlements?)\b",
+        re.IGNORECASE,
+    ),
+}
 TRACKING_PATTERNS = {
     "google-analytics": re.compile(r"google-analytics", re.IGNORECASE),
     "googletagmanager": re.compile(r"googletagmanager", re.IGNORECASE),
@@ -748,6 +757,12 @@ class Validation:
         roofmates_source = compact(" ".join(self.pages[ROOT / "roofmates.html"].claim_surfaces))
         for truth in REQUIRED_ROOFMATES_TRUTHS:
             self.check(truth in roofmates_source, f"roofmates.html: required launch boundary is missing: {truth}")
+        privacy_source = compact(" ".join(self.pages[ROOT / "roofmates-privacy.html"].claim_surfaces))
+        for label, pattern in DEFERRED_PRIVACY_CATEGORIES.items():
+            self.check(
+                not pattern.search(privacy_source),
+                f"roofmates-privacy.html: deferred launch data category found: {label}",
+            )
         stylesheet = self.stylesheet
         self.check(
             bool(LAUNCH_BAND_HEADING_CONTRAST.search(stylesheet)),

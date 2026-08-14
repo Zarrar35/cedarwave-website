@@ -107,6 +107,18 @@ class PublicRoofmatesClaimTests(unittest.TestCase):
         self.assertEqual(validate_site.RETIRED_SCREENSHOT_SHA256, INDEPENDENT_RETIRED_SCREENSHOT_SHA256)
         self.assertEqual(self.run_validation(), 0)
 
+    def test_deferred_launch_data_categories_fail_closed_in_privacy_candidate(self) -> None:
+        for category in ("chores", "grocery lists", "maintenance requests", "purchase history"):
+            with self.subTest(category=category):
+                privacy = self.site_root / "roofmates-privacy.html"
+                baseline = privacy.read_text(encoding="utf-8")
+                privacy.write_text(
+                    baseline.replace("</article>", f"<p>{category}</p></article>"),
+                    encoding="utf-8",
+                )
+                self.assertEqual(self.run_validation(), 1)
+                privacy.write_text(baseline, encoding="utf-8")
+
     def test_every_retired_feature_claim_fails_closed_on_both_launch_pages(self) -> None:
         baselines = {
             name: (self.site_root / name).read_text(encoding="utf-8")
