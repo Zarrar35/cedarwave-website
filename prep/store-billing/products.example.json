@@ -1,0 +1,38 @@
+{
+  "$schema": "https://example.cedarwave/schemas/roofmates/products.schema.json",
+  "currency": "USD",
+  "products": [
+    {
+      "id": "rm_premium_monthly",
+      "name": "Roofmates Premium (Monthly)",
+      "type": "subscription",
+      "platformSkus": {
+        "ios": "com.cedarwave.roofmates.premium.monthly",
+        "android": "com.cedarwave.roofmates.premium.monthly"
+      },
+      "introductoryOffer": {
+        "type": "none"
+      },
+      "entitlements": ["premium_core"]
+    },
+    {
+      "id": "rm_premium_yearly",
+      "name": "Roofmates Premium (Yearly)",
+      "type": "subscription",
+      "platformSkus": {
+        "ios": "com.cedarwave.roofmates.premium.yearly",
+        "android": "com.cedarwave.roofmates.premium.yearly"
+      },
+      "introductoryOffer": {
+        "type": "none"
+      },
+      "entitlements": ["premium_core"]
+    }
+  ],
+  "notes": [
+    "Identifiers are placeholders; confirm final bundleId/packageName before use.",
+    "Prices are configured in app stores; not stored here.",
+    "Do not enable purchases until owner approval."
+  ]
+}
+
