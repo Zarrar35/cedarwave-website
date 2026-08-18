@@ -1,0 +1,27 @@
+{
+  "entitlements": [
+    {
+      "id": "premium_core",
+      "capabilities": [
+        "larger_household_limits",
+        "advanced_event_tools",
+        "future_features_placeholder"
+      ],
+      "grantedByProducts": [
+        "rm_premium_monthly",
+        "rm_premium_yearly"
+      ],
+      "revocationPolicy": "on_refund_or_expiry",
+      "gracePeriodDays": 3
+    }
+  ],
+  "validation": {
+    "sourceOfTruth": "server",
+    "clientCacheTtlHours": 6
+  },
+  "notes": [
+    "Capabilities are illustrative. Finalize before enabling billing.",
+    "Entitlements are assigned after server validation only."
+  ]
+}
+

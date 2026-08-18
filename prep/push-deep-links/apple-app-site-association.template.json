@@ -1,0 +1,32 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "TEAMID.com.cedarwave.roofmates" 
+        ],
+        "paths": [
+          "/rm/*",
+          "/roofmates/*",
+          "/roofmates.html"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "TEAMID.com.cedarwave.roofmates"
+    ]
+  },
+  "activitycontinuation": {
+    "apps": [
+      "TEAMID.com.cedarwave.roofmates"
+    ]
+  },
+  "notes": [
+    "TEAMID and bundleId are placeholders; replace with production values before use.",
+    "Do not move this template to /.well-known/ until owner approval."
+  ]
+}
+
