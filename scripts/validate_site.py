@@ -15,26 +15,30 @@ from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parent.parent
-ORIGIN = "https://cedarwavetechnologies.com"
+COMPANY_ORIGIN = "https://cedarwavetechnologies.com"
+PRODUCT_ORIGIN = "https://roofmates.cedarwavetechnologies.com"
 EXPECTED_HTML_COUNT = 8
+EXPECTED_CANONICALS = {
+    "index.html": f"{COMPANY_ORIGIN}/",
+    "privacy.html": f"{COMPANY_ORIGIN}/privacy.html",
+    "support.html": f"{COMPANY_ORIGIN}/support.html",
+    "roofmates.html": f"{PRODUCT_ORIGIN}/",
+    "roofmates-privacy.html": f"{PRODUCT_ORIGIN}/privacy.html",
+    "roofmates-terms.html": f"{PRODUCT_ORIGIN}/terms.html",
+    "roofmates-support.html": f"{PRODUCT_ORIGIN}/support.html",
+    "roofmates-delete-account.html": f"{PRODUCT_ORIGIN}/delete-account.html",
+}
 UNSUPPORTED_ROOFMATES_CLAIMS = {
-    "Events": re.compile(r"\bevents?\b", re.IGNORECASE),
-    "Pools": re.compile(r"\bpools?\b", re.IGNORECASE),
-    "Chat or conversations": re.compile(r"\b(?:chats?|conversations?)\b", re.IGNORECASE),
-    "chores": re.compile(r"\bchores?\b", re.IGNORECASE),
-    "groceries": re.compile(r"\bgroceries\b", re.IGNORECASE),
-    "maintenance or Safety Center": re.compile(r"\b(?:maintenance|safety\s+center)\b", re.IGNORECASE),
-    "fit check": re.compile(r"\bfit\s+check\b", re.IGNORECASE),
-    "compatibility or alignment score": re.compile(
-        r"\b(?:(?:compatibility|alignment|match)\s+(?:percentage|score|result)s?"
-        r"|\d{1,3}\s*(?:%|percent)\s+(?:match|compatible|fit|aligned))\b",
+    "current feature availability": re.compile(
+        r"\b(?:roofmates\s+main\s+today\s+includes|all\s+features\s+are\s+(?:live|available)|"
+        r"available\s+now|download\s+now)\b",
         re.IGNORECASE,
     ),
-    "introductions": re.compile(r"\bintroductions?\b", re.IGNORECASE),
-    "identity verification": re.compile(r"\b(?:identity\s+verified|verified\s+identity|identity\s+verification)\b", re.IGNORECASE),
-    "lease or tenancy documents": re.compile(r"\b(?:lease|tenancy|rental)\s+(?:agreements?|documents?|signing|uploads?)\b", re.IGNORECASE),
-    "Finder": re.compile(r"\bfinder\b", re.IGNORECASE),
-    "Premium": re.compile(r"\bpremium\b", re.IGNORECASE),
+    "premature store availability": re.compile(
+        r"\b(?:live\s+on\s+(?:the\s+)?(?:app\s+store|google\s+play)|"
+        r"(?:app\s+store|google\s+play)\s+(?:release|listing)\s+is\s+live)\b",
+        re.IGNORECASE,
+    ),
     "affirmative money movement": re.compile(
         r"\broofmates\s+(?:moves?|sends?|holds?|transfers?)\s+(?:roommate\s+)?(?:money|funds)\b",
         re.IGNORECASE,
@@ -68,22 +72,19 @@ UNSUPPORTED_ROOFMATES_CLAIMS = {
     ),
 }
 REQUIRED_ROOFMATES_TRUTHS = (
-    "Household membership alone does not expose every expense.",
-    "does not hold or transfer roommate funds",
-    "does not create or change a lease, tenancy, or ownership right",
+    "These are launch goals under active development and testing, not a claim that the app is publicly available today.",
+    "Roofmates does not custody roommate funds.",
+    "This is the intended launch scope, not a statement that every feature is live today.",
+    "No feature listed on this page should be read as currently available to the public.",
 )
 REQUIRED_INDEX_TRUTHS = (
-    "with explicit participant boundaries and no money movement.",
+    "Roofmates is still prelaunch.",
+    "Provider, production, legal, store, and final-device acceptance gates remain in progress.",
 )
-DEFERRED_PRIVACY_CATEGORIES = {
-    "chores": re.compile(r"\bchores?\b", re.IGNORECASE),
-    "groceries or lists": re.compile(r"\b(?:groceries|lists?)\b", re.IGNORECASE),
-    "maintenance or Safety Center": re.compile(r"\b(?:maintenance|safety\s+center)\b", re.IGNORECASE),
-    "purchases, subscriptions, or entitlements": re.compile(
-        r"\b(?:purchases?|subscriptions?|entitlements?)\b",
-        re.IGNORECASE,
-    ),
-}
+REQUIRED_PRIVACY_TRUTHS = (
+    "IQBAL, LLC d/b/a Cedarwave Technologies",
+    "roofmates-support@cedarwavetechnologies.com",
+)
 TRACKING_PATTERNS = {
     "google-analytics": re.compile(r"google-analytics", re.IGNORECASE),
     "googletagmanager": re.compile(r"googletagmanager", re.IGNORECASE),
@@ -101,7 +102,7 @@ LAUNCH_BAND_HEADING_CONTRAST = re.compile(
     re.DOTALL,
 )
 EXPECTED_PREVIEW_ACCESSIBLE_NAME = (
-    "Illustrative Roofmates launch preview showing a shared expense, "
+    "Illustrative Roofmates prelaunch preview showing a shared expense, "
     "participant-scoped balance, and Home, Wallet, House, and You destinations"
 )
 RETIRED_SCREENSHOT_PATH = "assets/roofmates-phone-ios.png"
@@ -578,7 +579,10 @@ class Validation:
             self.errors.append(message)
 
     def parse_pages(self) -> list[Path]:
-        pages = sorted(ROOT.glob("*.html"))
+        pages = sorted(
+            page for page in ROOT.glob("*.html")
+            if not page.name.startswith("google")
+        )
         self.check(
             len(pages) == EXPECTED_HTML_COUNT,
             f"expected {EXPECTED_HTML_COUNT} root HTML pages; found {len(pages)}",
@@ -603,7 +607,8 @@ class Validation:
         }
         for page in pages:
             data = self.pages[page]
-            expected_canonical = f"{ORIGIN}/" if page.name == "index.html" else f"{ORIGIN}/{page.name}"
+            expected_canonical = EXPECTED_CANONICALS.get(page.name)
+            self.check(expected_canonical is not None, f"{page.name}: canonical expectation is not configured")
             requirements = {
                 "title": data.titles,
                 "meta description": data.descriptions,
@@ -658,10 +663,28 @@ class Validation:
         if parsed.scheme in {"mailto", "tel", "data"}:
             return None, None, False
         if parsed.scheme or parsed.netloc:
-            if parsed.scheme != "https" or parsed.netloc != "cedarwavetechnologies.com":
+            if parsed.scheme != "https" or parsed.netloc not in {
+                "cedarwavetechnologies.com",
+                "roofmates.cedarwavetechnologies.com",
+            }:
                 return None, parsed.fragment or None, False
             url_path = unquote(parsed.path)
-            candidate = ROOT / (url_path.lstrip("/") or "index.html")
+            if parsed.netloc == "roofmates.cedarwavetechnologies.com":
+                product_targets = {
+                    "": "roofmates.html",
+                    "support.html": "roofmates-support.html",
+                    "privacy.html": "roofmates-privacy.html",
+                    "terms.html": "roofmates-terms.html",
+                    "delete-account.html": "roofmates-delete-account.html",
+                }
+                product_path = url_path.lstrip("/")
+                mapped = product_targets.get(product_path)
+                if mapped is None:
+                    self.errors.append(f"{source.name}: unknown Roofmates product URL: {raw_url}")
+                    return None, parsed.fragment or None, True
+                candidate = ROOT / mapped
+            else:
+                candidate = ROOT / (url_path.lstrip("/") or "index.html")
         else:
             url_path = unquote(parsed.path)
             if not url_path:
@@ -758,11 +781,8 @@ class Validation:
         for truth in REQUIRED_ROOFMATES_TRUTHS:
             self.check(truth in roofmates_source, f"roofmates.html: required launch boundary is missing: {truth}")
         privacy_source = compact(" ".join(self.pages[ROOT / "roofmates-privacy.html"].claim_surfaces))
-        for label, pattern in DEFERRED_PRIVACY_CATEGORIES.items():
-            self.check(
-                not pattern.search(privacy_source),
-                f"roofmates-privacy.html: deferred launch data category found: {label}",
-            )
+        for truth in REQUIRED_PRIVACY_TRUTHS:
+            self.check(truth in privacy_source, f"roofmates-privacy.html: required controller/contact truth is missing: {truth}")
         stylesheet = self.stylesheet
         self.check(
             bool(LAUNCH_BAND_HEADING_CONTRAST.search(stylesheet)),

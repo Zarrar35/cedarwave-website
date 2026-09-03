@@ -1,3 +1,4 @@
 # Local visual QA evidence; keep review artifacts out of the published site.
 /design-qa.md
 /qa/
+__pycache__/

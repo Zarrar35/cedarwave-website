@@ -19,47 +19,33 @@ import validate_site
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 INDEPENDENT_REQUIRED_TRUTHS = (
-    "Household membership alone does not expose every expense.",
-    "does not hold or transfer roommate funds",
-    "does not create or change a lease, tenancy, or ownership right",
+    "These are launch goals under active development and testing, not a claim that the app is publicly available today.",
+    "Roofmates does not custody roommate funds.",
+    "This is the intended launch scope, not a statement that every feature is live today.",
+    "No feature listed on this page should be read as currently available to the public.",
 )
 INDEPENDENT_INDEX_TRUTHS = (
-    "with explicit participant boundaries and no money movement.",
+    "Roofmates is still prelaunch.",
+    "Provider, production, legal, store, and final-device acceptance gates remain in progress.",
 )
 INDEPENDENT_PREVIEW_NAME = (
-    "Illustrative Roofmates launch preview showing a shared expense, "
+    "Illustrative Roofmates prelaunch preview showing a shared expense, "
     "participant-scoped balance, and Home, Wallet, House, and You destinations"
 )
-INDEPENDENT_RETIRED_CLAIMS = (
-    "Create Events for the house",
-    "Start Pools together",
-    "Use the household Chat",
-    "Track Chores",
-    "Manage Groceries",
-    "Report Maintenance",
-    "Open the Safety Center",
-    "Run a fit check",
-    "See a compatibility score",
-    "Request introductions",
-    "Identity verified",
-    "Upload lease documents",
-    "Use Finder",
-    "Unlock Premium",
+INDEPENDENT_PREMATURE_CLAIMS = (
+    "Roofmates main today includes Events",
+    "All features are live",
+    "All features are available",
+    "Download now",
+    "Roofmates is live on the App Store",
+    "Google Play listing is live",
     "Roofmates moves money",
     "Roofmates changes tenancy",
     "Send messages",
     "Verify your identity",
     "Direct roommate payment",
-    "92% match",
-    "Identity verification",
     "Sign a lease",
     "Pay your roommate right in Roofmates",
-    "Pay roommates in the app",
-    "Send cash to your roommate via Roofmates.",
-    "Transfer cash to your roommate via Roofmates.",
-    "92 percent match",
-    "Confirm who you are before joining",
-    "Execute your rental contract",
 )
 INDEPENDENT_RETIRED_SCREENSHOT_SHA256 = "8752f835453bfff550d7374e6484829d15c26c322abe719de26965895237cdca"
 INDEPENDENT_CONTRAST_PAIRS = {
@@ -107,25 +93,23 @@ class PublicRoofmatesClaimTests(unittest.TestCase):
         self.assertEqual(validate_site.RETIRED_SCREENSHOT_SHA256, INDEPENDENT_RETIRED_SCREENSHOT_SHA256)
         self.assertEqual(self.run_validation(), 0)
 
-    def test_deferred_launch_data_categories_fail_closed_in_privacy_candidate(self) -> None:
-        for category in ("chores", "grocery lists", "maintenance requests", "purchase history"):
-            with self.subTest(category=category):
-                privacy = self.site_root / "roofmates-privacy.html"
-                baseline = privacy.read_text(encoding="utf-8")
-                privacy.write_text(
-                    baseline.replace("</article>", f"<p>{category}</p></article>"),
-                    encoding="utf-8",
-                )
+    def test_privacy_controller_and_contact_truths_fail_closed(self) -> None:
+        privacy = self.site_root / "roofmates-privacy.html"
+        baseline = privacy.read_text(encoding="utf-8")
+        for truth in validate_site.REQUIRED_PRIVACY_TRUTHS:
+            with self.subTest(truth=truth):
+                self.assertIn(truth, baseline)
+                privacy.write_text(baseline.replace(truth, "removed"), encoding="utf-8")
                 self.assertEqual(self.run_validation(), 1)
                 privacy.write_text(baseline, encoding="utf-8")
 
-    def test_every_retired_feature_claim_fails_closed_on_both_launch_pages(self) -> None:
+    def test_every_premature_or_unsafe_claim_fails_closed_on_both_launch_pages(self) -> None:
         baselines = {
             name: (self.site_root / name).read_text(encoding="utf-8")
             for name in ("index.html", "roofmates.html")
         }
         for page_name in baselines:
-            for claim in INDEPENDENT_RETIRED_CLAIMS:
+            for claim in INDEPENDENT_PREMATURE_CLAIMS:
                 with self.subTest(page=page_name, claim=claim):
                     for name, source in baselines.items():
                         (self.site_root / name).write_text(source, encoding="utf-8")
@@ -135,7 +119,7 @@ class PublicRoofmatesClaimTests(unittest.TestCase):
     def test_semantic_claim_scan_decodes_entities_and_reads_metadata(self) -> None:
         roofmates = self.site_root / "roofmates.html"
         baseline = roofmates.read_text(encoding="utf-8")
-        self.mutate_public_page("roofmates.html", "<p>Create Ev&#101;nts together</p>")
+        self.mutate_public_page("roofmates.html", "<p>Roofmates main today incl&#117;des Events</p>")
         self.assertEqual(self.run_validation(), 1)
 
         roofmates.write_text(
