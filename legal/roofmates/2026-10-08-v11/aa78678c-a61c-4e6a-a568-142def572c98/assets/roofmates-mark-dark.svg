@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Roofmates dark-surface woven roof mark</title>
+  <desc id="desc">Two light rounded ribbons join to create one open home.</desc>
+  <path d="M270 786V500L512 284L606 368" fill="none" stroke="#E8A7B8" stroke-width="164" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M512 284L754 500V786H470" fill="none" stroke="#F08A68" stroke-width="164" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
