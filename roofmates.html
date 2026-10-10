@@ -3,18 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Coordinate shared expenses, settlements, invitations, plans, and household context in one calm shared-living app from Cedarwave Technologies.">
+  <meta name="description" content="Shared living, sorted. Coordinate household expenses, recorded settlements, invitations and everyday routines with Roofmates from Cedarwave Technologies.">
   <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="https://roofmates.cedarwavetechnologies.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Cedarwave Technologies">
-  <meta property="og:title" content="Roofmates — Shared expenses and plans, under one roof">
-  <meta property="og:description" content="A calm place for shared expenses, settlements, invitations, plans, and household context.">
+  <meta property="og:title" content="Roofmates — Shared living, sorted.">
+  <meta property="og:description" content="Keep household expenses, shared plans and everyday routines organized in one place.">
   <meta property="og:url" content="https://roofmates.cedarwavetechnologies.com/">
   <meta name="twitter:card" content="summary">
-  <title>Roofmates — Shared Living, Simplified | Cedarwave Technologies</title>
+  <title>Roofmates — Shared living, sorted. | Cedarwave Technologies</title>
   <link rel="stylesheet" href="styles.css?v=dark-1">
+  <style>
+    /* Page-scoped contrast and narrow-screen wrapping for the current theme. */
+    .launch-band h2 { color: var(--ink); }
+    .product-contact > * { min-width: 0; }
+    .product-contact .mono a { overflow-wrap: anywhere; }
+    .feature-visual .pill { color: #183e30; }
+  </style>
   <script src="site.js" defer></script>
   <script type="application/ld+json">
     {
@@ -23,7 +30,7 @@
       "name": "Roofmates",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "iOS, Android",
-      "description": "A shared-living app for coordinating expenses, settlements, invitations, plans, and household context.",
+      "description": "A shared-living app for household expenses, recorded settlements, invitations, optional Household Plus routines, and device-only child profiles.",
       "url": "https://roofmates.cedarwavetechnologies.com/",
       "author": {"@type": "Organization", "name": "Cedarwave Technologies", "legalName": "IQBAL, LLC", "url": "https://cedarwavetechnologies.com/"}
     }
@@ -46,13 +53,20 @@
       <div class="product-hero__inner">
         <div>
           <div class="product-lockup"><img src="assets/roofmates-mark-dark.svg" alt="" width="28" height="28"><div><strong>Roofmates</strong><span class="mono">by Cedarwave Technologies</span></div></div>
-          <h1>Shared expenses and plans, <em>under one roof.</em></h1>
-          <p class="product-hero__copy">Roofmates gives roommates one calm place to coordinate shared expenses, settlements, invitations, events, pools, membership, and the conversations around them.</p>
+          <h1>Shared living, <em>sorted.</em></h1>
+          <p class="product-hero__copy">Roofmates gives roommates and shared households one calm place to track expenses, record settlements, invite the right people, and organize the everyday work of home.</p>
           <div class="button-row"><a class="button button--product" href="#how-it-works">Explore how it works</a><a class="button button--secondary" href="roofmates-support.html">Visit Roofmates support</a></div>
-          <p class="product-status mono">● Preparing for closed testing — iOS · Android</p>
+          <p class="product-status mono">● Preparing for App Store review</p>
         </div>
-        <div class="product-phones product-phones--single" aria-label="Roofmates for iOS preview">
-          <img src="assets/roofmates-phone-ios.png" width="669" height="1396" alt="Roofmates Home showing shared household context and the Home, Wallet, House, and You destinations" fetchpriority="high">
+        <div class="feature-visual" aria-label="Illustrative Roofmates household overview">
+          <div class="ui-card">
+            <div class="ui-card__top"><span>One home. A clearer picture.</span><span class="pill">Roofmates</span></div>
+            <p class="ui-card__meta">Shared living, at a glance</p>
+            <div class="ui-row"><span>Home</span><strong>What needs attention</strong></div>
+            <div class="ui-row"><span>Wallet</span><strong>Expenses &amp; recorded settlements</strong></div>
+            <div class="ui-row"><span>House</span><strong>Your household &amp; invitations</strong></div>
+            <div class="ui-row"><span>You</span><strong>Account, settings &amp; support</strong></div>
+          </div>
         </div>
       </div>
     </section>
@@ -66,16 +80,16 @@
             <div class="feature-visual" aria-label="Shared expense example"><div class="ui-card"><div class="ui-card__top"><span>Costco run</span><span>$86.40</span></div><p class="ui-card__meta">Paid by Alex · split with 2 participants</p><div class="ui-row"><span>Your share</span><strong>$28.80 · settled</strong></div><div class="ui-row"><span>Jordan owes</span><strong>$28.80</strong></div></div></div>
           </article>
           <article class="feature-row">
-            <div class="feature-copy"><span class="mono">02</span><h2>Plans and pools that stay connected to participants</h2><p>Events carry their guest list, invitations, and RSVPs. Pools track contributions toward a shared goal. Each knows exactly who is involved — and nothing assumes the whole house is.</p></div>
-            <div class="feature-visual" aria-label="Shared pool example"><div class="ui-card"><div class="ui-card__top"><span>Ski cabin pool</span><span class="pill">Pool</span></div><div class="progress"><span></span></div><div class="ui-card__meta">$1,550 of $2,000 · 4 contributors</div><div class="ui-row"><span>Linked event</span><strong>Lake Tahoe weekend · Jul 26</strong></div></div></div>
+            <div class="feature-copy"><span class="mono">02</span><h2>A shared home, with everyone in the loop</h2><p>Keep household members, invitations, and shared records together. Invite roommates with a household code or QR link, then use Home, Wallet, House, and You to find what needs attention.</p></div>
+            <div class="feature-visual" aria-label="Illustrative household organization"><div class="ui-card"><div class="ui-card__top"><span>Your household</span><span class="pill">House</span></div><p class="ui-card__meta">A place for the everyday work of living together</p><div class="ui-row"><span>People</span><strong>Members &amp; invitations</strong></div><div class="ui-row"><span>Shared records</span><strong>Expenses &amp; settlements</strong></div><div class="ui-row"><span>Next steps</span><strong>See what needs action</strong></div></div></div>
           </article>
           <article class="feature-row">
-            <div class="feature-copy"><span class="mono">03</span><h2>The right conversations with the right people</h2><p>Every household, event, pool, and transaction can carry its own thread. The conversation lives next to the thing it is about, with exactly the people it involves — not one group chat for everything.</p></div>
-            <div class="feature-visual" aria-label="Event conversation example"><div class="ui-card"><div class="ui-card__top"><span>Lake Tahoe weekend</span><span class="pill">Event · 5 people</span></div><div class="chat"><div class="bubble">Cabin booked — receipt is in the pool.</div><div class="bubble bubble--mine">Split looks right — settling my share tonight.</div></div><p class="ui-card__meta">Visible to Event participants only</p></div></div>
+            <div class="feature-copy"><span class="mono">03</span><h2>Make room for a smoother week</h2><p>Optional Household Plus adds recurring routines and adult rotations, monthly check-ins, and reusable move-in and move-out handover templates. Start a moving checklist and attach private photos shared with current household members. Due reminders appear inside the app.</p></div>
+            <div class="feature-visual" aria-label="Illustrative Household Plus features"><div class="ui-card"><div class="ui-card__top"><span>Household Plus</span><span class="pill">Optional</span></div><div class="ui-row"><span>Routines</span><strong>Recurring assignments</strong></div><div class="ui-row"><span>Monthly check-ins</span><strong>Shared notes &amp; next steps</strong></div><div class="ui-row"><span>Handovers</span><strong>Reusable checklists</strong></div><p class="ui-card__meta">Moving-checklist photos stay with that checklist; templates do not copy them.</p></div></div>
           </article>
           <article class="feature-row">
-            <div class="feature-copy"><span class="mono">04</span><h2>A household view that respects private activity</h2><p>Joining a household doesn't put your whole life on a shared bulletin board. The House view shows members what involves them, while private expenses and conversations stay with their participants.</p></div>
-            <div class="feature-visual" aria-label="Household visibility example"><div class="ui-card scope-list"><div class="ui-card__top"><span>Sunset House</span><span class="ui-card__meta">4 members · 1 guest</span></div><div class="ui-row"><span>Utilities — July</span><span class="pill">Household</span></div><div class="ui-row"><span>Ski cabin pool</span><span class="pill">Pool · 4</span></div><div class="ui-row"><span>Birthday gift</span><span class="pill">Private · 2</span></div></div></div>
+            <div class="feature-copy"><span class="mono">04</span><h2>A little space of their own</h2><p>Signed-in parents can open You &gt; Settings &gt; Child profiles to manage local chores and recorded allowances or rewards. Profiles and optional photos stay encrypted on that device; Roofmates retains none on its servers. Separate guardian controls protect access.</p></div>
+            <div class="feature-visual" aria-label="Illustrative device-only child-profile features"><div class="ui-card"><div class="ui-card__top"><span>Child profiles</span><span class="pill">On this device</span></div><div class="ui-row"><span>Chores</span><strong>Local assignments &amp; completions</strong></div><div class="ui-row"><span>Rewards</span><strong>Recorded, without money transfers</strong></div><div class="ui-row"><span>Guardian controls</span><strong>Manage access &amp; erase records</strong></div><p class="ui-card__meta">No independent online account or child purchases.</p></div></div>
           </article>
         </div>
       </div>
@@ -83,15 +97,15 @@
 
     <section class="boundaries">
       <div class="boundaries__inner">
-        <div><span class="eyebrow">Boundaries</span><h2>Coordinate what's shared.<br>Keep context intact.</h2><p>Household membership does not automatically make every expense, plan, or conversation visible to everyone. Every activity in Roofmates belongs to one of six scopes, and visibility follows participation.</p><p class="boundary-note">Roofmates is a coordination tool and shared ledger. It does not hold or transfer roommate funds.</p></div>
+        <div><span class="eyebrow">Boundaries</span><h2>Coordinate what's shared.<br>Keep context intact.</h2><p>Household membership does not automatically make every expense or conversation visible to everyone. Shared records follow their participants, while child-profile records stay on the device where they were created.</p><p class="boundary-note">Roofmates is a coordination tool and shared ledger. It does not hold or transfer roommate funds.</p></div>
         <div class="scope-grid">
-          <div class="scope-card"><strong>Household</strong><span>Visible to every current member of the house.</span></div><div class="scope-card"><strong>Event</strong><span>Scoped to an event's participants and invited guests.</span></div><div class="scope-card"><strong>Pool</strong><span>Shared with the people contributing to a pooled plan.</span></div><div class="scope-card"><strong>Transaction</strong><span>Limited to a single expense's participants.</span></div><div class="scope-card"><strong>Private</strong><span>Yours alone, or a chosen few — never house-wide by default.</span></div><div class="scope-card"><strong>Guest</strong><span>Lets non-members join an event without joining the house.</span></div>
+          <div class="scope-card"><strong>Household records</strong><span>Keep shared household details with the people they involve.</span></div><div class="scope-card"><strong>Expense participants</strong><span>Choose who participates in a shared expense.</span></div><div class="scope-card"><strong>Private contexts</strong><span>Activity is not made house-wide by default.</span></div><div class="scope-card"><strong>Child profiles</strong><span>Local profiles, photos, chores and recorded rewards stay on that device.</span></div>
         </div>
       </div>
     </section>
 
     <section class="launch-band">
-      <div class="launch-band__inner"><div><span class="mono">Launch status</span><h2>Preparing for closed testing and store release.</h2></div><p>App Store and Google Play links will appear here only after the Cedarwave Technologies listings are live and verified. No dates, badges, or waitlists before then.</p></div>
+      <div class="launch-band__inner"><div><span class="mono">Launch status</span><h2>Preparing for App Store review.</h2></div><p>The iOS release is being prepared for review. Roofmates is not publicly available to download yet. This page will link to a store listing once it is live and verified.</p></div>
     </section>
 
     <section class="section" id="faq">
@@ -100,13 +114,13 @@
         <div class="faq-grid">
           <h2>What Roofmates<br>is — and is not.</h2>
           <div class="faq-list">
-            <details open><summary>Who is Roofmates for?</summary><p>Adults coordinating a shared household — roommates, friends, co-living houses, and people setting up a new home together.</p></details>
-            <details><summary>Does Roofmates hold or transfer money?</summary><p>No. Roofmates is a coordination tool and shared ledger. It is not a bank, lender, money transmitter, or escrow service and does not custody roommate funds.</p></details>
-            <details><summary>Does everyone see every activity?</summary><p>No. Visibility follows participation across household, Event, Pool, transaction, private, and guest contexts.</p></details>
-            <details><summary>Which platforms are planned?</summary><p>Roofmates is being prepared as a native app for iOS and Android.</p></details>
-            <details><summary>How can someone get support?</summary><p>Visit the Roofmates support page or email roofmates-support@cedarwavetechnologies.com.</p></details>
-            <details><summary>What is still in progress before a public launch?</summary><ul><li>Guest conversations for Events.</li><li>Receipt review UI.</li><li>Push and deep‑link routing and production delivery.</li><li>Real Premium billing (the in‑app Premium surface is present, but billing is not enabled).</li><li>Person‑to‑person payments and tenancy/lease workflows.</li></ul><p class="mono">Roofmates main today includes Events, Pools, authenticated chat, household operations (chores, groceries, maintenance), Event tasks, Pool contributions, membership administration, Finder, and Pool creation.</p></details>
-            <details><summary>Is there a Premium?</summary><p>A Premium surface appears in‑app for future features. Billing is not enabled yet.</p></details>
+            <details open><summary>Who is Roofmates for?</summary><p>Adults coordinating a shared household — roommates, friends, co-living houses, and people setting up a new home together. Independent accounts and adult guests are for people age 18 or older. Parents can supervise device-only child profiles through separate guardian controls.</p></details>
+            <details><summary>Does Roofmates hold or transfer money?</summary><p>No. Roofmates is a coordination tool and shared ledger. It is not a bank, lender, money transmitter, or escrow service and does not custody roommate funds. Settlements, child allowances and rewards are records; they do not send money.</p></details>
+            <details><summary>Does everyone see every activity?</summary><p>No. Visibility follows the activity and its participants. Joining a household does not automatically make every expense or private conversation visible to the whole house.</p></details>
+            <details><summary>What is Household Plus?</summary><p>Household Plus is optional. It adds recurring routines, monthly check-ins and reusable handovers with moving checklists and private photos. Basic shared records and safety tools remain available without Plus.</p><p>The iOS offering includes monthly and annual auto-renewable subscriptions and a one-time Household Permanent purchase. A buyer owns coverage for one selected eligible household at a time. The purchase screen shows the applicable price and terms. See the <a href="roofmates-purchase.html">Purchase and Subscription Policy</a> for the complete terms, including cancellation and refunds.</p></details>
+            <details><summary>Where are child-profile records kept?</summary><p>Child profiles, optional photos, chores and recorded allowances stay encrypted on the family device. Roofmates retains none on its servers. Child profiles cannot make independent purchases or join the adult network. Guardian controls provide local deletion; Roofmates support cannot restore these records.</p></details>
+            <details><summary>Is Roofmates available to download?</summary><p>We are preparing the iOS release for App Store review. There is no public download link or announced release date yet.</p></details>
+            <details><summary>How can someone get support?</summary><p>Visit the <a href="roofmates-support.html">Roofmates support page</a> or email <a href="mailto:roofmates-support@cedarwavetechnologies.com">roofmates-support@cedarwavetechnologies.com</a>. The <a href="roofmates-privacy.html">Privacy Policy</a> and <a href="roofmates-terms.html">Terms of Service</a> explain the current service terms.</p></details>
           </div>
         </div>
         <div class="product-contact"><div><h2>Questions about Roofmates?</h2><p class="mono"><a href="mailto:roofmates-support@cedarwavetechnologies.com">roofmates-support@cedarwavetechnologies.com</a></p></div><a class="button button--wine" href="roofmates-support.html">Visit Roofmates support</a></div>
